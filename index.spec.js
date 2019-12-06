@@ -37,4 +37,5 @@ test('hasTwoOrMorePrimeFactors', () => {
   expect(hasTwoOrMorePrimeFactors(6)).toBe(true);
   expect(hasTwoOrMorePrimeFactors(8)).toBe(false);
   expect(hasTwoOrMorePrimeFactors(10)).toBe(true);
+  expect(hasTwoOrMorePrimeFactors(12)).toBe(true);
 });

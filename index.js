@@ -23,18 +23,28 @@ const isPrime = (n, dividend = 2) => {
 
 const isComposite = negate(isPrime);
 
-const hasSecondDistinctPrimeFactor = (num, factor) => {
+const isOneOfTwoPrimeFactors = (num, factor) => {
   if (num % factor) return false;
   const secondFactor = num / factor;
   return secondFactor !== factor && isPrime(secondFactor);
 };
 
-const hasTwoOrMorePrimeFactors = n => [
-  ...rangeGenerator(1, Math.round(n / 2 + 0.5), (num) => (
+// this function is wrong as-is - it does not take into
+// account multiple prime factors such as 2 * 2 * 3 = 12
+const hasTwoOrMorePrimeFactors = (n) => {
+  const iterator = rangeGenerator(2, Math.round(n / 2 + 0.5), (num) => (
     isPrime(num) &&
-      hasSecondDistinctPrimeFactor(n, num)
-  ))
-].length > 1;
+      isOneOfTwoPrimeFactors(n, num)
+  ));
+
+  /* eslint-disable no-unused-vars */
+  for (const _ of iterator) {
+  /* eslint-enable no-unused-vars */
+    // if there are literally any 
+    return true;
+  }
+  return false;
+};
 
 module.exports = {
   isPrime,
