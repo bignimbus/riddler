@@ -2,7 +2,7 @@ const {
   isPrime,
   isComposite,
   rangeGenerator,
-  hasTwoOrMorePrimeFactors,
+  hasAtLeastTwoPrimeFactors,
 } = require('.');
 
 describe('rangeGenerator', () => {
@@ -33,9 +33,9 @@ test('isPrime', () => {
 });
 
 test('hasTwoOrMorePrimeFactors', () => {
-  expect(hasTwoOrMorePrimeFactors(4)).toBe(false);
-  expect(hasTwoOrMorePrimeFactors(6)).toBe(true);
-  expect(hasTwoOrMorePrimeFactors(8)).toBe(false);
-  expect(hasTwoOrMorePrimeFactors(10)).toBe(true);
-  expect(hasTwoOrMorePrimeFactors(12)).toBe(true);
+  expect(hasAtLeastTwoPrimeFactors(4)).toBe(false);
+  expect(hasAtLeastTwoPrimeFactors(6)).toBe(true);
+  expect(hasAtLeastTwoPrimeFactors(8)).toBe(false);
+  expect(hasAtLeastTwoPrimeFactors(10)).toBe(true);
+  expect(hasAtLeastTwoPrimeFactors(12)).toBe(true);
 });
