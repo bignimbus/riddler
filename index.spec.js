@@ -1,7 +1,10 @@
 const {
+  product,
   isPrime,
+  middleOut,
   isComposite,
   rangeGenerator,
+  eligibleNumbers,
   hasAtLeastTwoPrimeFactors,
 } = require('.');
 
@@ -32,10 +35,30 @@ test('isPrime', () => {
   expect(isPrime(42)).toBe(false);
 });
 
-test('hasTwoOrMorePrimeFactors', () => {
+test('hasAtLeastTwoPrimeFactors', () => {
   expect(hasAtLeastTwoPrimeFactors(4)).toBe(false);
   expect(hasAtLeastTwoPrimeFactors(6)).toBe(true);
   expect(hasAtLeastTwoPrimeFactors(8)).toBe(false);
   expect(hasAtLeastTwoPrimeFactors(10)).toBe(true);
   expect(hasAtLeastTwoPrimeFactors(12)).toBe(true);
+});
+
+test('eligibleNumbers', () => {
+  expect(eligibleNumbers()).toMatchSnapshot();
+});
+
+test('middleOut', () => {
+  expect(middleOut([1, 2, 3])).toEqual([2, 3, 1]);
+  expect(middleOut([1, 2, 3, 4])).toEqual([2, 3, 1, 4]);
+  expect(middleOut([1, 2, 3, 4, 10])).toEqual([3, 4, 2, 1, 10]);
+  expect(middleOut([1, 2, 3, 4, 10, 25])).toEqual([3, 4, 2, 1, 10, 25]);
+});
+
+test('product', () => {
+  expect(product([1, 2])).toBe(2);
+  expect(product([3, 7])).toBe(21);
+  expect(product([10, 20, 10])).toBe(2e3);
+});
+
+test('productMap', () => {
 });

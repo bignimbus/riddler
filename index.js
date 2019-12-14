@@ -50,10 +50,30 @@ const hasAtLeastTwoPrimeFactors = (num) => {
   return false;
 }
 
+const eligibleNumbers = () => [
+  ...rangeGenerator(
+    1, 
+    70,
+    n => isComposite(n) && hasAtLeastTwoPrimeFactors(n),
+  ),
+];
+
+const middleOut = (arr) => {
+  const pivot = Math.round(arr.length / 2);
+  return [...arr].sort((a, b) =>
+    Math.abs(a - pivot) - Math.abs(b - pivot) || b - a
+  );
+};
+
+const product = arr => arr.reduce((p, n) => p * n, 1);
+
 module.exports = {
+  product,
   isPrime,
+  middleOut,
   isComposite,
   rangeGenerator,
+  eligibleNumbers,
   hasAtLeastTwoPrimeFactors,
 };
 
