@@ -75,6 +75,7 @@ module.exports = {
   isPrime,
   isComposite,
   rangeGenerator,
+  allPermutations,
   eligibleNumbers,
   hasAtLeastTwoPrimeFactors,
 };

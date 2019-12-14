@@ -3,6 +3,7 @@ const {
   isPrime,
   isComposite,
   rangeGenerator,
+  allPermutations,
   eligibleNumbers,
   hasAtLeastTwoPrimeFactors,
 } = require('.');
@@ -50,4 +51,16 @@ test('product', () => {
   expect(product([1, 2])).toBe(2);
   expect(product([3, 7])).toBe(21);
   expect(product([10, 20, 10])).toBe(2e3);
+});
+
+test('allPermutations', () => {
+  const expected = [
+    [1, 2, 3],
+    [1, 2, 4],
+    [1, 3, 4],
+    [2, 3, 4],
+  ];
+  const actual = allPermutations([1, 2, 3, 4], 3);
+  expect(expected).toEqual(expect.arrayContaining(actual));
+  expect(actual).toEqual(expect.arrayContaining(expected));
 });
