@@ -58,19 +58,21 @@ const eligibleNumbers = () => [
   ),
 ];
 
-const middleOut = (arr) => {
-  const pivot = Math.round(arr.length / 2);
-  return [...arr].sort((a, b) =>
-    Math.abs(a - pivot) - Math.abs(b - pivot) || b - a
-  );
-};
-
 const product = arr => arr.reduce((p, n) => p * n, 1);
+
+const without = (arr, n) => arr.filter(num => num === n);
+
+const allPermutations = (arr) => {
+  // get every possible 5-digit combination of the eligible numbers
+  // start with first num.  Pop off every combination with first num
+  // iterate - remove first num.  Get second num, all possible
+  // combinations with the first num are taken.  Get remaining combinations
+  // now.  Etc.
+};
 
 module.exports = {
   product,
   isPrime,
-  middleOut,
   isComposite,
   rangeGenerator,
   eligibleNumbers,
