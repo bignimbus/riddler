@@ -23,24 +23,38 @@ const isPrime = (n, dividend = 2) => {
 
 const isComposite = negate(isPrime);
 
-const hasSecondDistinctPrimeFactor = (num, factor) => {
-  if (num % factor) return false;
-  const secondFactor = num / factor;
-  return secondFactor !== factor && isPrime(secondFactor);
-};
+// completely ripped off of
+// https://js-algorithms.tutorialhorizon.com/2015/09/27/find-all-the-prime-factors-for-the-given-number://js-algorithms.tutorialhorizon.com/2015/09/27/find-all-the-prime-factors-for-the-given-number/
+const hasAtLeastTwoPrimeFactors = (num) => {
+  const primeFactors = new Set();
 
-const hasTwoOrMorePrimeFactors = n => [
-  ...rangeGenerator(1, Math.round(n / 2 + 0.5), (num) => (
-    isPrime(num) &&
-      hasSecondDistinctPrimeFactor(n, num)
-  ))
-].length > 1;
+  while (num % 2 === 0) {
+    primeFactors.add(2);
+    num = num / 2;
+  }
+  
+  for (let i = 3; i <= Math.sqrt(num); i++) {
+    while (num % i === 0) {
+      primeFactors.add(i);
+      if (primeFactors.size > 1) return true;
+      num = num / i;
+    }
+  }
+
+  if (num > 2) {
+    primeFactors.add(num);
+  }
+
+  if (primeFactors.size > 1) return true;
+
+  return false;
+}
 
 module.exports = {
   isPrime,
   isComposite,
   rangeGenerator,
-  hasTwoOrMorePrimeFactors,
+  hasAtLeastTwoPrimeFactors,
 };
 
 /*
