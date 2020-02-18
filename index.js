@@ -50,10 +50,33 @@ const hasAtLeastTwoPrimeFactors = (num) => {
   return false;
 }
 
+const eligibleNumbers = () => [
+  ...rangeGenerator(
+    1, 
+    70,
+    n => isComposite(n) && hasAtLeastTwoPrimeFactors(n),
+  ),
+];
+
+const product = arr => arr.reduce((p, n) => p * n, 1);
+
+const without = (arr, n) => arr.filter(num => num === n);
+
+const allPermutations = (arr) => {
+  // get every possible 5-digit combination of the eligible numbers
+  // start with first num.  Pop off every combination with first num
+  // iterate - remove first num.  Get second num, all possible
+  // combinations with the first num are taken.  Get remaining combinations
+  // now.  Etc.
+};
+
 module.exports = {
+  product,
   isPrime,
   isComposite,
   rangeGenerator,
+  allPermutations,
+  eligibleNumbers,
   hasAtLeastTwoPrimeFactors,
 };
 
